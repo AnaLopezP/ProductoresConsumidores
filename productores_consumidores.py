@@ -24,13 +24,12 @@ def consumidor(nombre):
         print(f"El consumidor {nombre} está comiendo el bollo {contador}")
         contador += 1
         cola.task_done() #Envía una señal de que ha terminado, así el productor puede hornear otro bollo
-        time.sleep(1)
+        time.sleep(3)
 
 #CÓDIGO PRINCIPAL
 if __name__ == "__main__":
     #Separamos las tareas en hilos diferentes. En un hilo se hornea y en otro se come
-    hilo1 = Thread(target= productor, args=("Din Djarin"))
-    hilo2 = Thread(target = consumidor, args=("Grogu"))
+    hilo1 = Thread(target= productor, args=("Din Djarin",))
+    hilo2 = Thread(target = consumidor, args=("Grogu",))
     hilo1.start()
     hilo2.start()
-    
